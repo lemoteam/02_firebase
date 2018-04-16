@@ -4,6 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Firebase;
+using Firebase.Auth;
+using UnityEngine.SceneManagement;
 
 public class FormManager : MonoBehaviour {
 
@@ -20,6 +24,9 @@ public class FormManager : MonoBehaviour {
 
 	void Awake() {
 		ToggleButtonStates (false);
+
+		// Auth Delegate Subscription
+		authManager.authCallback += HandleAuthCallback;
 	}
 
 	/// <summary>
@@ -47,6 +54,29 @@ public class FormManager : MonoBehaviour {
 
 	public void OnLogin() {
 		Debug.Log ("Login");
+	}
+
+
+	IEnumerator HandleAuthCallback (Task<Firebase.Auth.FirebaseUser> task, string operation) {
+		if (task.IsCanceled) {
+			UpdateStatus ("La création a été annulée.");
+		}
+		if (task.IsFaulted) {
+			UpdateStatus ("Oups une erreur est survenue : " + task.Exception);
+		}
+		if (task.IsCompleted) {
+			// Firebase user has been created.
+			Firebase.Auth.FirebaseUser newUser = task.Result;
+			UpdateStatus ("On charge ton expérience");
+
+			yield return new WaitForSeconds (1.5f);
+			SceneManager.LoadScene ("Player List");
+		}
+	} 
+
+	void OnDestroy() {
+		// Auth Delegate Subscription
+		authManager.authCallback -= HandleAuthCallback;
 	}
 
 	// Utilities
