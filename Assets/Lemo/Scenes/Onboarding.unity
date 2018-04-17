@@ -1217,7 +1217,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1609830882}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09c6b5ab3f66048e290b3c31a4e1bf27, type: 3}
+  m_Script: {fileID: 11500000, guid: e2b0e68c243584d7997dcbbe21f049a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   emailInput: {fileID: 399907401}
@@ -1324,7 +1324,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1638947233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6538a90e0c6524d1b9bf90195c1a8a4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 63fae9a25cbcb49b790f3d6e5e470b68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1638947235
@@ -1405,6 +1405,46 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1914313429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1914313431}
+  - component: {fileID: 1914313430}
+  m_Layer: 0
+  m_Name: DBManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1914313430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1914313429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baac692c9c7144fda9c617b27a5e4e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1914313431
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1914313429}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 922.19727, y: 1340.1823, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1936274544
 GameObject:
   m_ObjectHideFlags: 0

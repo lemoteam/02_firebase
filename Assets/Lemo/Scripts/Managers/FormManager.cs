@@ -66,8 +66,18 @@ public class FormManager : MonoBehaviour {
 			UpdateStatus ("Oups une erreur est survenue : " + task.Exception);
 		}
 		if (task.IsCompleted) {
+
 			// Firebase user has been created.
 			Firebase.Auth.FirebaseUser newUser = task.Result;
+			Debug.LogFormat("Tu es bien inscrit à Lémo {0}!", newUser.Email);
+
+
+			if (operation == "sign_up") {				
+				Reader reader = new Reader(newUser.Email, 0, 1);
+				DatabaseManager.sharedInstance.CreateNewReader(reader, newUser.UserId);
+			}
+
+			
 			UpdateStatus ("On charge ton expérience");
 
 			yield return new WaitForSeconds (1.5f);
