@@ -23,8 +23,8 @@ public class DatabaseManager : MonoBehaviour {
 
 		FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://unity-firebase-78a2d.firebaseio.com/");
 
-		Debug.Log(Router.Players());
-		Router.Players().SetValueAsync("testing 1, 2");
+		Debug.Log(Router.Readers());
+		Router.Readers().SetValueAsync("testing 1, 2");
 	}
 	
 	// Update is called once per frame

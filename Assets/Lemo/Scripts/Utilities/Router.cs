@@ -9,11 +9,11 @@ public class Router : MonoBehaviour {
 
 	private static DatabaseReference baseRef = FirebaseDatabase.DefaultInstance.RootReference;
 
-	public static DatabaseReference Players() {
-		return baseRef.Child("players");
+	public static DatabaseReference Readers() {
+		return baseRef.Child("readers");
 	}
 
-	public static DatabaseReference PlayersWithUID(string uid) {
-		return baseRef.Child("players").Child(uid);
+	public static DatabaseReference ReadersWithUID(string uid) {
+		return baseRef.Child("readers").Child(uid);
 	}
 }
