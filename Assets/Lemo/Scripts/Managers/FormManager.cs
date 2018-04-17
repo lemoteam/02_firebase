@@ -72,7 +72,8 @@ public class FormManager : MonoBehaviour {
 			Debug.LogFormat("Tu es bien inscrit à Lémo {0}!", newUser.Email);
 
 
-			if (operation == "sign_up") {				
+			if (operation == "sign_up") {		
+				Debug.Log ("SIGN SIGN SIGN");		
 				Reader reader = new Reader(newUser.Email, 0, 1);
 				DatabaseManager.sharedInstance.CreateNewReader(reader, newUser.UserId);
 			}
