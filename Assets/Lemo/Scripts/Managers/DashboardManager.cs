@@ -11,6 +11,7 @@ public class DashboardManager : MonoBehaviour {
 
 		DatabaseManager.sharedInstance.GetReaders(result => {
 			readerList = result;
+			Debug.Log("AYO");
 			Debug.Log(readerList[0].email);
 		});
 	}

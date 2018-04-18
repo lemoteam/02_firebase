@@ -34,14 +34,13 @@ public class DatabaseManager : MonoBehaviour {
 	public void GetReaders(Action<List<Reader>> completionBlock) {
 		List<Reader> tmpList = new List<Reader> ();
 
-		Router.Reader().GetValueAsync().ContinueWith (task => {
+		Router.ReaderWithUID("UiXMSzcJT6Zc7Kf3BFXdHElX3ri2").GetValueAsync().ContinueWith (task => { // Place a UID
+
 			DataSnapshot reader = task.Result;
 
-			foreach(DataSnapshot readerNode in reader.Children) {
-				var readerDict = (IDictionary<string, object>)readerNode.Value;
-				Reader newReader = new Reader(readerDict);
-				tmpList.Add(newReader);
-			}
+			var readerDict = (IDictionary<string, object>)reader.Value;
+			Reader newReader = new Reader(readerDict);
+			tmpList.Add(newReader);
 
 			completionBlock(tmpList);
 		});
