@@ -82,7 +82,7 @@ public class FormManager : MonoBehaviour {
 			UpdateStatus ("On charge ton expérience");
 
 			yield return new WaitForSeconds (1.5f);
-			SceneManager.LoadScene ("Player List");
+			SceneManager.LoadScene ("Dashboard");
 		}
 	} 
 

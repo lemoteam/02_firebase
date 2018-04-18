@@ -4,6 +4,7 @@ using UnityEngine;
 using Firebase;
 using Firebase.Database;
 using Firebase.Unity.Editor;
+using System;
 
 public class DatabaseManager : MonoBehaviour {
 
@@ -22,14 +23,27 @@ public class DatabaseManager : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 
 		FirebaseApp.DefaultInstance.SetEditorDatabaseUrl("https://unity-firebase-78a2d.firebaseio.com/");
-
-		//Debug.Log(Router.Reader());
-		//Router.Reader().SetValueAsync("testing 1, 2");
 	}
 	
 	public void CreateNewReader(Reader reader, string uid) {
 		Debug.Log ("readerJSON readerJSON readerJSON");
 		string readerJSON = JsonUtility.ToJson(reader);
 		Router.ReaderWithUID(uid).SetRawJsonValueAsync(readerJSON);
+	}
+
+	public void GetReaders(Action<List<Reader>> completionBlock) {
+		List<Reader> tmpList = new List<Reader> ();
+
+		Router.Reader().GetValueAsync().ContinueWith (task => {
+			DataSnapshot reader = task.Result;
+
+			foreach(DataSnapshot readerNode in reader.Children) {
+				var readerDict = (IDictionary<string, object>)readerNode.Value;
+				Reader newReader = new Reader(readerDict);
+				tmpList.Add(newReader);
+			}
+
+			completionBlock(tmpList);
+		});
 	}
 }
