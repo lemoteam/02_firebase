@@ -31,18 +31,13 @@ public class DatabaseManager : MonoBehaviour {
 		Router.ReaderWithUID(uid).SetRawJsonValueAsync(readerJSON);
 	}
 
-	public void GetReaders(Action<List<Reader>> completionBlock) {
-		List<Reader> tmpList = new List<Reader> ();
+	public void GetReader(string UID, Action<Reader> completionBlock) {
 
-		Router.ReaderWithUID("UiXMSzcJT6Zc7Kf3BFXdHElX3ri2").GetValueAsync().ContinueWith (task => { // Place a UID
-
+		Router.ReaderWithUID(UID).GetValueAsync().ContinueWith (task => { // Place a UID
 			DataSnapshot reader = task.Result;
-
 			var readerDict = (IDictionary<string, object>)reader.Value;
 			Reader newReader = new Reader(readerDict);
-			tmpList.Add(newReader);
-
-			completionBlock(tmpList);
+			completionBlock(newReader);
 		});
 	}
 }
