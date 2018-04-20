@@ -24,7 +24,6 @@ public class AuthManager : MonoBehaviour {
 		});
 	}
 
-
 	public void LoginExistingUser(string email, string password) {
 		auth.SignInWithEmailAndPasswordAsync(email, password).ContinueWith(task => {
 			StartCoroutine(authCallback(task, "login"));
